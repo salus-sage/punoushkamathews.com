@@ -1,0 +1,49 @@
+{
+  "hero": {
+    "eyebrow": "Filmmaker · Writer · Cyanotype Artist",
+    "firstName": "Anoushka",
+    "lastName": "Mathews",
+    "intro": "Bangalore-based documentary filmmaker with 12 years of directing, writing, and teaching across India.",
+    "portrait": "/media/placeholder.jpg"
+  },
+  "about": {
+    "lead": "Anoushka Mathews is a Bangalore-based filmmaker, writer, and cyanotype artist who has grown up across the country.",
+    "paragraphs": [
+      "Over the past 12 years, she has directed and edited both short and feature-length documentaries, and non-fiction films for multiple organisations and institutions.",
+      "She has also written for multiple print and online publications, and has taught, mentored, and facilitated workshops for diverse audiences."
+    ]
+  },
+  "education": [
+    {
+      "degree": "P.G Certificate in Screenplay Writing",
+      "institution": "Films and Television Institute of India, Pune",
+      "year": "2011"
+    },
+    {
+      "degree": "P.G Diploma in TV and Video Production",
+      "institution": "Xavier Institute of Communication, Mumbai",
+      "year": "2009"
+    },
+    {
+      "degree": "B.A (Hons) Psychology",
+      "institution": "Jesus and Mary College, Delhi University",
+      "year": "2008"
+    }
+  ],
+  "contact": {
+    "heading": "Let's work\ntogether.",
+    "phone": "+91-7042845737",
+    "email": "anoushka.mathews@gmail.com",
+    "instagram": "punoushka"
+  },
+  "work": {
+    "cyanotypeIntro": "Samples of original cyanotype prints — a photographic process using UV light and iron-based chemistry to produce Prussian blue images on paper."
+  },
+  "footer": {
+    "tagline": "Filmmaker · Writer · Cyanotype Artist · Bangalore"
+  },
+  "meta": {
+    "title": "Anoushka Mathews",
+    "description": "Portfolio of Anoushka Mathews, a Bangalore-based documentary filmmaker, writer and cyanotype artist, showcasing films, series, news features, writing, exhibitions, workshops and cyanotype prints."
+  }
+}

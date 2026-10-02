@@ -1,0 +1,93 @@
+# Validate, build and deploy the site to GitHub Pages.
+# Spec: specs/FEAT-PORTFOLIO-001 (TASK-005). Pages source must be "GitHub Actions".
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# contents: write is reserved for the TASK-006 commit-back of optimised images.
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+# Never cancel a run that may be mid commit-back; queue instead.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # pnpm version comes from the packageManager field in package.json.
+      - uses: pnpm/action-setup@v4
+
+      # Node major is pinned in .mise.toml (node = "22"). setup-node cannot read
+      # .mise.toml via node-version-file, so keep this value in sync by hand.
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      # On push only the images in the pushed range are touched, so a file is
+      # re-encoded at most once. Manual dispatch sweeps every file over the limits.
+      - name: Optimise images
+        if: github.event_name == 'push'
+        run: pnpm optimize-images --changed ${{ github.event.before }} ${{ github.sha }}
+
+      - name: Optimise images
+        if: github.event_name == 'workflow_dispatch'
+        run: pnpm optimize-images
+
+      # A push made with GITHUB_TOKEN does not trigger another workflow run, so one
+      # owner save yields one run. Validate and build below see the optimised files.
+      - name: Commit optimised images
+        run: |
+          if [ -n "$(git status --porcelain public/media)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add public/media
+            git commit -m "chore(media): optimise images"
+            git pull --rebase origin main
+            git push
+          else
+            echo "No image changes to commit"
+          fi
+
+      - run: pnpm validate
+
+      # Project site at /<repo>/ unless a custom domain (public/CNAME) is present.
+      - name: Resolve base path
+        run: |
+          if [ -f public/CNAME ]; then
+            echo "VITE_BASE_PATH=/" >> "$GITHUB_ENV"
+          else
+            echo "VITE_BASE_PATH=/${{ github.event.repository.name }}/" >> "$GITHUB_ENV"
+          fi
+
+      - run: pnpm build
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

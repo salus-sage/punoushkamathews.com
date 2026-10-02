@@ -1,0 +1,156 @@
+media:
+  - name: images
+    label: Images
+    input: public/media
+    output: /media
+    extensions: [jpg, jpeg, webp]
+    rename: safe
+
+content:
+  - name: projects
+    label: Projects
+    type: collection
+    path: content/projects
+    format: json
+    filename: "{primary}.json"
+    view:
+      primary: title
+      fields: [thumbnail, title, category, year]
+      sort: [year, title]
+      search: [title, category, client, description, role]
+      default:
+        sort: year
+        order: desc
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+        description: Name of the film, article, exhibition or workshop.
+        options: { maxlength: 160 }
+      - name: category
+        label: Category
+        type: select
+        required: true
+        description: Which tab this appears under.
+        options:
+          values: [Films, Series, News Features, Music Video, Reels, Writing, Exhibitions, Workshops & Teaching, Improv, Cyanotypes]
+      - name: client
+        label: Client or publisher
+        type: string
+        description: Who it was made for or published by. Leave blank for personal work.
+      - name: description
+        label: Description
+        type: text
+        required: true
+        description: One or two sentences. This is what visitors read on the card.
+        options: { maxlength: 600 }
+      - name: role
+        label: Your role
+        type: string
+        description: "For example: Director, Editor."
+      - name: year
+        label: Year
+        type: string
+        description: Four digits, for example 2024. Used to order projects, newest first.
+        pattern:
+          regex: "^\\d{4}$"
+          message: Enter a four digit year.
+      - name: link
+        label: Link to the work
+        type: string
+        description: YouTube, Vimeo, article or exhibition page. Opens in a new tab.
+        pattern:
+          regex: "^https?://"
+          message: Must start with http:// or https://
+      - name: linkLabel
+        label: Link button label
+        type: string
+        description: Leave blank to use Watch, Read or View automatically.
+        options: { maxlength: 24 }
+      - name: thumbnail
+        label: Thumbnail
+        type: image
+        description: Landscape still, at least 1400px wide. Large files are resized automatically after upload.
+        options:
+          media: images
+      - name: tags
+        label: Tags
+        type: string
+        list: true
+        description: "Only used for the Writing tab filters, for example: Disability."
+      - name: order
+        label: Manual order
+        type: number
+        description: Lower numbers appear first within the category. Leave blank to sort by year.
+        options: { min: 0 }
+
+  - name: site
+    label: Site settings
+    type: file
+    path: content/site.json
+    format: json
+    fields:
+      - name: hero
+        label: Hero
+        type: object
+        fields:
+          - { name: eyebrow, label: Eyebrow line, type: string }
+          - { name: firstName, label: First name, type: string, required: true }
+          - { name: lastName, label: Last name, type: string, required: true }
+          - { name: intro, label: Intro, type: text }
+          - { name: portrait, label: Portrait, type: image, options: { media: images } }
+      - name: about
+        label: About
+        type: object
+        fields:
+          - { name: lead, label: Lead paragraph, type: text, required: true }
+          - { name: paragraphs, label: Further paragraphs, type: text, list: true }
+      - name: education
+        label: Education
+        type: object
+        list:
+          collapsible: { collapsed: true, summary: "{degree}" }
+        fields:
+          - { name: degree, label: Degree, type: string, required: true }
+          - { name: institution, label: Institution, type: string, required: true }
+          - { name: year, label: Year, type: string }
+      - name: contact
+        label: Contact
+        type: object
+        fields:
+          - { name: heading, label: Heading, type: string }
+          - { name: phone, label: Phone, type: string }
+          - name: email
+            label: Email
+            type: string
+            pattern:
+              regex: "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$"
+              message: Enter a valid email address.
+          - name: instagram
+            label: Instagram handle
+            type: string
+            description: Handle without the @
+            pattern:
+              regex: "^[^@\\s]*$"
+              message: Enter the handle without the leading @.
+      - name: work
+        label: Work section
+        type: object
+        fields:
+          - { name: cyanotypeIntro, label: Cyanotypes intro, type: text }
+      - name: footer
+        label: Footer
+        type: object
+        fields:
+          - { name: tagline, label: Tagline, type: string }
+      - name: meta
+        label: Search and browser
+        type: object
+        fields:
+          - { name: title, label: Browser tab title, type: string, required: true }
+          - { name: description, label: Search description, type: text }
+
+settings:
+  content:
+    merge: true
