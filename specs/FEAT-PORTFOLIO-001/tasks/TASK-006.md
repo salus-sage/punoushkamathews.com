@@ -98,6 +98,7 @@ optimise the migrated placeholder images.
 - `sharp` prebuilt binaries must install on `ubuntu-latest` and macOS arm64 without extra
   system packages; if `pnpm install` needs `--ignore-scripts` adjustments, document them in
   `README.md`.
+- The commit-back step refuses to commit any staged media blob under 1 KB (LFS pointer guard, added after the first live run converted every image to a pointer because the Figma `.gitattributes` tracked images with LFS).
 - The commit-back step must not run on pull requests from forks (not a concern today because
   the trigger is `push` to `main` only; keep it that way).
 

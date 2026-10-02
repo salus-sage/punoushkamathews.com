@@ -86,6 +86,7 @@ sets it to `/<repo-name>/` for the GitHub Pages demo URL and leaves it unset onc
 - No new runtime dependencies beyond zod. No router, no state library, no UI kit.
 - Scripts in `scripts/` are plain TypeScript run with `tsx`, no build step.
 - Theme values, class names and inline styles are moved, not changed, during refactors.
+- No Git LFS. Images are plain blobs; `.gitattributes` must never gain `filter=lfs` rules.
 - `pnpm validate` must pass before any task is marked complete.
 
 ## Styling

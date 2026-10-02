@@ -480,6 +480,7 @@ would survive a save.
 | Owner uploads a PNG or HEIC | Blocked by `extensions` in `.pages.yml`. Guide tells them to export JPEG |
 | Owner deletes a media file still referenced by a project | `validate-content` fails the run, previous site stays live, developer gets the Actions email. Card would otherwise fall back to the placeholder via `onError` |
 | Two saves within a minute | Runs queue (`cancel-in-progress: false`); the second run starts from the optimiser commit of the first because it checks out `main` fresh |
+| Runner has `git-lfs` and `.gitattributes` tracks images with LFS | Happened on the first live run: `git add` turned all 46 images into 131-byte pointers and pushed them. Fixed by replacing the Figma `.gitattributes` with plain `binary` rules and by a guard in the commit step that fails if any staged media blob is under 1 KB |
 | Optimiser commit races a new owner commit | Optimiser does `git pull --rebase` before push; on conflict (impossible for binary files it alone touches, but) it fails loudly and the next run redoes the work |
 | Title edited after creation | Filename (slug) does not change. Fine, slug is not visible anywhere yet |
 | Two projects with the same title | Pages CMS would try to write the same filename. Validation warns; guide tells the owner to add the year or client to the title |
