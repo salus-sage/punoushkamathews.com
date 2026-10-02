@@ -54,14 +54,14 @@ content:
         type: string
         description: Four digits, for example 2024. Used to order projects, newest first.
         pattern:
-          regex: "^\\d{4}$"
+          regex: "^(\\d{4})?$"
           message: Enter a four digit year.
       - name: link
         label: Link to the work
         type: string
         description: YouTube, Vimeo, article or exhibition page. Opens in a new tab.
         pattern:
-          regex: "^https?://"
+          regex: "^(https?://.*)?$"
           message: Must start with http:// or https://
       - name: linkLabel
         label: Link button label
@@ -125,7 +125,7 @@ content:
             label: Email
             type: string
             pattern:
-              regex: "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$"
+              regex: "^([^\\s@]+@[^\\s@]+\\.[^\\s@]+)?$"
               message: Enter a valid email address.
           - name: instagram
             label: Instagram handle

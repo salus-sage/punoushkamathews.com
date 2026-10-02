@@ -266,8 +266,9 @@ Complete file, identical to `.pages.yml` in the repo root. Field types and optio
 the Pages CMS docs as checked on 2026-10-02: select uses `options.values`, image uses
 `options.media`, lists use `list: true`, collections support `format: json` and `filename`.
 In `view`, `sort` and `search` are lists of field names and the default ordering lives under
-`view.default.sort` and `view.default.order`. Email and Instagram carry `pattern` checks that
-mirror the zod schema; `order` carries `options.min: 0`. Residual gap: the CMS cannot enforce
+`view.default.sort` and `view.default.order`. Every `pattern` accepts an empty value, because Pages CMS runs the
+regex on blank optional fields too (found in the first live test). Email and Instagram carry
+`pattern` checks that mirror the zod schema; `order` carries `options.min: 0`. Residual gap: the CMS cannot enforce
 that `order` is an integer, so a decimal would be caught only by `validate-content`.
 
 ```yaml
@@ -327,14 +328,14 @@ content:
         type: string
         description: Four digits, for example 2024. Used to order projects, newest first.
         pattern:
-          regex: "^\\d{4}$"
+          regex: "^(\\d{4})?$"
           message: Enter a four digit year.
       - name: link
         label: Link to the work
         type: string
         description: YouTube, Vimeo, article or exhibition page. Opens in a new tab.
         pattern:
-          regex: "^https?://"
+          regex: "^(https?://.*)?$"
           message: Must start with http:// or https://
       - name: linkLabel
         label: Link button label
@@ -398,7 +399,7 @@ content:
             label: Email
             type: string
             pattern:
-              regex: "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$"
+              regex: "^([^\\s@]+@[^\\s@]+\\.[^\\s@]+)?$"
               message: Enter a valid email address.
           - name: instagram
             label: Instagram handle
