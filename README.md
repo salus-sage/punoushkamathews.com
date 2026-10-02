@@ -43,4 +43,4 @@ Feature spec, build plan and task breakdown: [specs/FEAT-PORTFOLIO-001/](specs/F
 
 ## For the owner
 
-See docs/OWNER-GUIDE.md (written in TASK-008).
+See [docs/OWNER-GUIDE.md](docs/OWNER-GUIDE.md) for the non-technical editing guide.
