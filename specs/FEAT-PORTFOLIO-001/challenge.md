@@ -108,8 +108,8 @@ indexable site where every film, article and print can actually be reached.
    is derived from the tags present in the category, so new tags appear automatically.*
 
 7. **Repository move:** the repo was built under the developer's personal account and
-   moves to `salus-sage/punoushkamathews.com` (already created, empty) after the build-phase
-   commit. *Decision: treat the owner and repo name as deployment configuration, never as
+   moved to `salus-sage/punoushkamathews.com` (a personal GitHub account, not an organisation)
+   on 2026-10-02 after the build-phase commit. *Decision: treat the owner and repo name as deployment configuration, never as
    code. Pages, the Pages CMS App and the collaborator are set up once, on the new repo;
    TASK-010 covers the move and TASK-008 runs after it.*
 

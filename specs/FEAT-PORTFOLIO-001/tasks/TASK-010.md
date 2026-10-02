@@ -1,4 +1,4 @@
-# TASK-010: Move the Repository to the Site's Organisation Account
+# TASK-010: Move the Repository to the Site's Own GitHub Account
 
 **Feature:** FEAT-PORTFOLIO-001 Static Portfolio + Pages CMS
 **Layer:** Operations - ownership
@@ -10,7 +10,7 @@
 ## Context
 
 Development happened under the developer's personal account (`bhanugs-aii`, repo
-`punmathews`). The site's long-term home is the organisation `salus-sage` and the repo
+`punmathews`). The site's long-term home is the GitHub user account `salus-sage` and the repo
 `punoushkamathews.com`, which already exists and is empty:
 `https://github.com/salus-sage/punoushkamathews.com.git`. Because the destination already
 exists, this is a remote switch and push, not a GitHub "transfer".
@@ -42,7 +42,7 @@ Point `origin` at the new repo, push `main`, retire the old repo, then run TASK-
 - [ ] `git remote set-url origin https://github.com/salus-sage/punoushkamathews.com.git` and
   `git push -u origin main` succeed; `gh repo view salus-sage/punoushkamathews.com` shows the
   commit
-- [ ] The developer is an owner of the `salus-sage` organisation (or has admin on the repo)
+- [ ] `bhanugs-aii` is a collaborator with Write on the new repo (done 2026-10-02); admin-level settings are made while signed in as `salus-sage`
 - [ ] The old repo `bhanugs-aii/punmathews` is archived (not deleted) with its description
   set to "Moved to salus-sage/punoushkamathews.com", so no one pushes to it by accident
 - [ ] `README.md` `## Live URL` and, once written, `docs/OWNER-GUIDE.md` carry

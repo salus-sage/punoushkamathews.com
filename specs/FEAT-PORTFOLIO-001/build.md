@@ -461,9 +461,9 @@ would survive a save.
 - No new runtime dependencies beyond zod. No router, no state library, no UI kit.
 - `pnpm validate` must pass before any task is marked complete.
 - Scripts in `scripts/` are plain TypeScript run with `tsx`, no build step.
-- **No hardcoded repository identity.** The repo will be transferred from the developer's
-  personal account to an organisation account owned for the site after the build phase
-  (TASK-010). Nothing under `src/`, `scripts/`, `vite.config.ts`, `.pages.yml` or
+- **No hardcoded repository identity.** The repo moved from the developer's personal
+  account to the site's own GitHub user account `salus-sage` after the build phase
+  (TASK-010, done 2026-10-02). Nothing under `src/`, `scripts/`, `vite.config.ts`, `.pages.yml` or
   `.github/` may contain the GitHub owner (`salus-sage`, or the original `bhanugs-aii`), the repo name, or the
   `github.io` URL as a literal. The workflow derives the base path from
   `github.event.repository.name`; docs that must show a URL (`README.md`, owner guide) carry
@@ -541,7 +541,7 @@ within three minutes, with no developer action.
 |------|-------|------------|-------|
 | **TASK-009** | Add `public/CNAME`, DNS records, verify HTTPS, confirm base path flips to `/`, update the owner guide URL | TASK-008 + domain purchased | 1 new file + settings |
 
-### Phase 5 - Repository Move (after the build-phase commit, before TASK-008)
+### Phase 5 - Repository Move (after the build-phase commit, before TASK-008) :DONE
 
 | Task | Scope | Depends on | Notes |
 |------|-------|------------|-------|
