@@ -4,5 +4,6 @@
   "client": "Vikalp Sangam",
   "description": "A short film about how the people of Ladakh, India's northern-most territory, have been searching for sustainable alternatives to promote and maintain their unique heritage and livelihoods, well-suited to the region's cold desert and mountainous ecosystems.",
   "role": "Associate Director, Co-Editor",
-  "thumbnail": "/media/homes-and-hearth.jpg"
+  "thumbnail": "/media/homes-and-hearth.jpg",
+  "order": 14
 }
