@@ -4,5 +4,6 @@
   "client": "ColorSorts",
   "description": "A short film on ColorSorts, a groundbreaking initiative addressing the garment industry's sustainability need by converting cotton waste into new garments through colour sorting.",
   "role": "Director, Editor",
-  "thumbnail": "/media/profile-film.jpg"
+  "thumbnail": "/media/profile-film.jpg",
+  "order": 12
 }
