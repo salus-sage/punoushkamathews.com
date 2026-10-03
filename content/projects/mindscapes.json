@@ -4,5 +4,6 @@
   "client": "Wellcome",
   "description": "A short event film on the Mindscapes International Summit held in Bengaluru in 2023, celebrating Wellcome's international cultural programme aimed at transforming how we understand, address and talk about mental health.",
   "role": "Editor",
-  "thumbnail": "/media/mindscapes.jpg"
+  "thumbnail": "/media/mindscapes.jpg",
+  "order": 13
 }
