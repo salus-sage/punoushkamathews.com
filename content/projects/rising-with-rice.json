@@ -4,5 +4,6 @@
   "client": "NABARD",
   "description": "A short film on Mayyil FPO, known for the miracles they have made in rice production. With NABARD's support, mechanisation of paddy farming was done, thus improving the crop yields and livelihoods of the farmers.",
   "role": "Director",
-  "thumbnail": "/media/rising-with-rice.jpg"
+  "thumbnail": "/media/rising-with-rice.jpg",
+  "order": 15
 }
