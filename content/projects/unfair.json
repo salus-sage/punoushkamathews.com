@@ -4,5 +4,6 @@
   "client": "PSBT, New Delhi",
   "description": "A feature-length documentary that explores the complexities of racism and the lived experiences of Africans in India.",
   "role": "Co-Director",
-  "thumbnail": "/media/unfair-2.jpg"
+  "thumbnail": "/media/unfair-2.jpg",
+  "order": 2
 }
