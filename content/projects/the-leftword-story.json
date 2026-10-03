@@ -4,5 +4,6 @@
   "client": "Leftword",
   "description": "A short film about LeftWord Books made on the occasion of their 20th anniversary.",
   "role": "Director, Editor",
-  "thumbnail": "/media/the-left-word-story.jpg"
+  "thumbnail": "/media/the-left-word-story.jpg",
+  "order": 5
 }
