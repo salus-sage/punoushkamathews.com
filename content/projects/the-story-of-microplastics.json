@@ -4,5 +4,6 @@
   "client": "Toxics Link",
   "description": "A short animation film about microplastics — their ubiquity in the air, water, soil, and now in human bodies.",
   "role": "Researcher, Writer, Director",
-  "order": 8
+  "order": 8,
+  "thumbnail": "/media/story-of-micro-plastics-1.jpg"
 }
